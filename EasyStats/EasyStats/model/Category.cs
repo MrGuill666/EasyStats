@@ -8,7 +8,12 @@ namespace EasyStats.model
 {
     class Category
     {
-        public string Name { get; set; }
+        public Category()
+        {
+            DataList = new List<Data>();
+            CategoryName = "DefaultCategoryName";
+        }
+        public string CategoryName { get; set; }
         public IList<Data> DataList { get; set; }
         public string Unit { get; set; }
     }

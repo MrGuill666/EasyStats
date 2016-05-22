@@ -8,8 +8,9 @@ namespace EasyStats.model
 {
     class Data
     {
-        public double Value { get; set; }
+        public Double Value { get; set; }
         public Category Category { get; set; }
         public string Comment { get; set; }
+        public int Day { get; set; }
     }
 }

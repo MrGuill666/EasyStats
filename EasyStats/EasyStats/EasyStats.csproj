@@ -98,21 +98,21 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainPage.xaml.cs">
+    <Compile Include="viewmodel\MainViewModel.cs" />
+    <Compile Include="view\GraphControl.xaml.cs">
+      <DependentUpon>GraphControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="model\Category.cs" />
     <Compile Include="model\Data.cs" />
-    <Compile Include="model\Model.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="view\EditDataControl.xaml.cs">
       <DependentUpon>EditDataControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="view\EditPage.xaml.cs">
       <DependentUpon>EditPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="view\MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="view\ViewDataControl.xaml.cs">
       <DependentUpon>ViewDataControl.xaml</DependentUpon>
@@ -139,7 +139,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainPage.xaml">
+    <Page Include="view\GraphControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -148,10 +152,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="view\EditPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="view\MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

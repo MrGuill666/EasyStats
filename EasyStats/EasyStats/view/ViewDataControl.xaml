@@ -6,10 +6,23 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+    xmlns:my="using:EasyStats.model"
     d:DesignHeight="300"
     d:DesignWidth="400">
 
     <Grid>
-
+        <Grid.Resources>
+            <my:Category x:Key="MyCategory" CategoryName="My category" />
+            <my:Data x:Key="MyData" Comment="My comment" Value="19.63"/>
+            
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Text="{Binding CategoryName, Source={StaticResource MyCategory}, Mode=OneWay}"/>
+        <TextBlock Grid.Row="1" Text="{Binding Value, Source={StaticResource MyData}, Mode=OneWay}"/>
+        
+        
     </Grid>
 </UserControl>
