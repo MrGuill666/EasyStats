@@ -1,0 +1,66 @@
+﻿<Page
+    x:Class="App3.EditPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:App3"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    DataContext="{StaticResource ViewModel}"
+    >
+
+    
+    
+            <Pivot>
+                <PivotItem>
+                    <PivotItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Day_"/>
+                            <TextBlock Text="{Binding Today}"/>
+                        </StackPanel>
+
+                    </PivotItem.Header>
+                    <PivotItem.Content>
+                        <ScrollViewer>
+                            <ItemsControl ItemsSource="{Binding NewItems}" >
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate >
+                                        <Grid HorizontalAlignment="Stretch" Margin="0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition />
+                                                <ColumnDefinition Width="10"/>
+                                                <ColumnDefinition Width="auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Grid.Column="0" Text="{Binding Category.Name}" />
+                                            <TextBox Grid.Column="0" Grid.Row="1" 
+                                                 InputScope="Number"
+                                                 Text="{Binding InputValue, Mode=TwoWay}"
+                                                 />
+                                            <TextBlock Grid.Column="2" Grid.Row="1" Text="{Binding Category.Unit}" VerticalAlignment="Center"/>
+                                        </Grid>
+
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                                <ItemsControl.ItemContainerStyle>
+                                    <Style TargetType="ContentPresenter">
+                                        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                                    </Style>
+                                </ItemsControl.ItemContainerStyle>
+                            </ItemsControl>
+                        </ScrollViewer>
+                    </PivotItem.Content>
+                </PivotItem>
+            </Pivot>
+
+  
+    <Page.BottomAppBar >
+        <CommandBar>
+            <AppBarButton Icon="Save" Click="AppBarButton_Click">Accept</AppBarButton>
+        </CommandBar>
+    </Page.BottomAppBar>
+</Page>

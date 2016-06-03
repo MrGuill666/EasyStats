@@ -1,0 +1,77 @@
+﻿<Page 
+    x:Class="App3.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:App3"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    DataContext="{StaticResource ViewModel}"
+    xmlns:chart="using:WinRTXamlToolkit.Controls.DataVisualization.Charting"
+    xmlns:datavis="using:WinRTXamlToolkit.Controls.DataVisualization"
+    >
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <ScrollViewer HorizontalScrollMode="Enabled" VerticalScrollMode="Disabled">
+            <chart:Chart  x:Name="LineSeries" >
+                <chart:Chart.LegendStyle>
+                    <Style TargetType="datavis:Legend">
+                        <Setter Property="Width" Value="0" />
+                    </Style>
+                </chart:Chart.LegendStyle>
+
+                    <chart:LineSeries ItemsSource="{Binding TodayLine, Mode=OneWay}" IndependentValuePath="B" DependentValuePath="A"  >
+                        <chart:LineSeries.DependentRangeAxis >
+                            <chart:LinearAxis Orientation="Y">
+                                
+                            </chart:LinearAxis>
+                        </chart:LineSeries.DependentRangeAxis>
+                    </chart:LineSeries>
+
+
+                </chart:Chart >
+            </ScrollViewer>
+        </Grid>
+        <StackPanel Grid.Row="1">
+            <Grid >
+                <TextBlock Text="Day" VerticalAlignment="Center"/>
+                <TextBox Text="{Binding Day, Mode=TwoWay}"  HorizontalAlignment="Center"/>
+            </Grid>
+            <ScrollViewer>
+                <ItemsControl ItemsSource="{Binding DailyItems, Mode=OneWay}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding Category.Name, Mode=OneWay}"/>
+                                <TextBlock Text="{Binding Value, Mode=OneWay}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+        </StackPanel>
+
+    </Grid>
+    <Page.BottomAppBar >
+        <CommandBar>
+            <CommandBar.PrimaryCommands>
+                <AppBarButton Icon="Add" Click="AppBarButtonAdd_Click"></AppBarButton>
+
+            </CommandBar.PrimaryCommands>
+            <CommandBar.SecondaryCommands>
+                <AppBarButton Label="Edit Categories" Click="AppBarButtonCategories_Click"/>
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+
+    </Page.BottomAppBar>
+
+
+</Page>
